@@ -15,6 +15,7 @@ module ShopifyCLI
             parser.on("--store-domain=MYSHOPIFYDOMAIN") { |url| flags[:store_domain] = url }
             parser.on("--type=APPTYPE") { |type| flags[:type] = type }
             parser.on("--verbose") { flags[:verbose] = true }
+            parser.on("--marketplace") { flags[:marketplace] = true }
           end
 
           def call(*)
@@ -24,6 +25,7 @@ module ShopifyCLI
               store_domain: options.flags[:store_domain],
               type: options.flags[:type],
               verbose: !options.flags[:verbose].nil?,
+              marketplace: !options.flags[:marketplace].nil?,
               context: @ctx
             )
           end
